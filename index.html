@@ -132,19 +132,87 @@
     </div>
 
     <div id="page4" class="screen">
-        <div class="glass-card" style="max-width: 700px; width: 90%;">
-            <h1>My Love</h1>
-            <div class="letter-body">
-                <p>Hi mahall kooo hihihi, gulatt ka dito nuu hihihihi😝. actually po isa toh sa mga pinag pupuyatan ko hihihihihii, it was a simple website i created as a gift for you mahall ko hihihihi. wala eh ict ako eh hihi so isa to sa mga alm kong way to show my appriciation for you hihihihi.</p>
+        <style>
+            /* New specific paper letter styles just for Page 4 */
+            .letter-paper {
+                background-color: #fdf6e3; /* Classic, off-white paper color */
+                background-image: linear-gradient(90deg, transparent 79px, #ab82ff 79px, #ab82ff 81px, transparent 81px),
+                                   linear-gradient(#e0d7c7 1px, transparent 1px);
+                background-size: 100% 1.8rem, 100% 1.8rem; /* Rule spacing (adjust as needed) */
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(224, 215, 199, 0.5);
                 
-                <p>Actually mahall, kahit hindi naman natin sya Monthsary, june 20 was a very special date for me, it was the date kung saan inipon ko lahatt nang tapang ko sa katawan, dahil dun ko din nasiguro na mahall nga talaga kita, dun ko nalaman na ayaw alaga kitang mawala sa buhay ko, ayunn napaamin ako nang wala sa oras hashashahshash, at yun din ang araw na na-realize ko kung gaano ako kamanhid hsahsjajshha.</p>
+                max-width: 650px; 
+                width: 90%; 
+                padding: 50px 70px; /* Ample margin for a realistic look */
+                border-radius: 3px; /* Sharp paper edges */
+                max-height: 80vh; 
+                overflow-y: auto; 
                 
-                <p>Thankyouuu mahall, sa lahatt nang memories na binigay mo sakin, gaya nang paborito natin na kanta sa i see the light, ngayong nandito ka sa buhay ko, mas malinaw at lumiwanag ang daan na tinatahak ko sa buhay, mas gumaan at dumali ang paglipas nang mga araw, at mas natutuna kong mag mahal, at mahalin ang sariliko. thankyouu mahall lalo na sa mga gala natin na kahit kabado ka or tumatakas ka lang, sumasama ka parin sakin, actually mahall, sobrang gratefull ko dun, kasi dahil may chance na mapagalitan ka, you still chose to be with me.</p>
+                color: #2e004a; /* Dark purple ink-like color */
+                font-family: 'Playfair Display', serif; /* A more letter-appropriate font */
+                line-height: 1.8rem; 
+                text-align: left;
+                position: relative;
+            }
 
-                <p>Iloveeeyouuu mahall koooo, at ikaw lang ang babaeng mamahalin ko hanang sa araw na kunin ako ni Lord. i cant wait sa right moment kung saan pwede na, sa araw na mapapakasalan kita, at sa panahon na kasama na kita sa iisang bahay at bumubuo ang pamilya. kaya i promisee my lovee that i will always choose you, forgive you, and love you hangang sa unti unti na natin nakukulayan ang mga plano natin sa buhay. mahal na mahal kitaa mahall kooo.</p>
+            /* Red "margin" line effect */
+            .letter-paper::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 80px;
+                height: 100%;
+                width: 2px;
+                background-color: #ffcccc; /* Soft red line */
+            }
+
+            /* Signature formatting */
+            .love-letter-signature {
+                margin-top: 60px;
+                font-family: 'Dancing Script', cursive; /* The handwriting font */
+                font-size: 1.8rem;
+                color: #5c2770;
+                text-align: right;
+                padding-right: 30px;
+            }
+            
+            /* Add some visual breathing room above the Go Back button */
+            #page4 .btn-romantic {
+                margin-top: 40px;
+                position: relative;
+                z-index: 10;
+                background: var(--glow-purple); /* Make it stand out against the paper */
+                color: var(--deep-purple);
+                border: 1px solid var(--deep-purple);
+            }
+            
+            /* Customize the scrollbar for the paper */
+            .letter-paper::-webkit-scrollbar {
+                width: 6px;
+            }
+            .letter-paper::-webkit-scrollbar-thumb {
+                background: #e0d7c7;
+                border-radius: 10px;
+            }
+        </style>
+
+        <div class="letter-paper">
+            <h1>My Love</h1>
+            
+            <p>Hi mahall kooo hihihi, gulatt ka dito nuu hihihihi😝. actually po isa toh sa mga pinag pupuyatan ko hihihihihii, it was a simple website i created as a gift for you mahall ko hihihihi. wala eh ict ako eh hihi so isa to sa mga alm kong way to show my appriciation for you hihihihi.</p>
+            
+            <p>Actually mahall, kahit hindi naman natin sya Monthsary, june 20 was a very special date for me, it was the date kung saan inipon ko lahatt nang tapang ko sa katawan, dahil dun ko din nasiguro na mahall nga talaga kita, dun ko nalaman na ayaw alaga kitang mawala sa buhay ko, ayunn napaamin ako nang wala sa oras hashashahshash, at yun din ang araw na na-realize ko kung gaano ako kamanhid hsahsjajshha.</p>
+            
+            <p>Thankyouuu mahall, sa lahatt nang memories na binigay mo sakin, gaya nang paborito natin na kanta sa i see the light, ngayong nandito ka sa buhay ko, mas malinaw at lumiwanag ang daan na tinatahak ko sa buhay, mas gumaan at dumali ang paglipas nang mga araw, at mas natutuna kong mag mahal, at mahalin ang sariliko. thankyouu mahall lalo na sa mga gala natin na kahit kabado ka or tumatakas ka lang, sumasama ka parin sakin, actually mahall, sobrang gratefull ko dun, kasi dahil may chance na mapagalitan ka, you still chose to be with me.</p>
+
+            <p>Iloveeeyouuu mahall koooo, at ikaw lang ang babaeng mamahalin ko hanang sa araw na kunin ako ni Lord. i cant wait sa right moment kung saan pwede na, sa araw na mapapakasalan kita, at sa panahon na kasama na kita sa iisang bahay at bumubuo ang pamilya. kaya i promisee my lovee that i will always choose you, forgive you, and love you hangang sa unti unti na natin nakukulayan ang mga plano natin sa buhay. mahal na mahal kitaa mahall kooo.</p>
+            
+            <div class="love-letter-signature">
+                From:<br>
+                Mahall mo,
             </div>
-            <button class="btn-romantic" onclick="toPage(1)">Go Back</button>
         </div>
+        <button class="btn-romantic" onclick="toPage(1)">Go Back</button>
     </div>
 
     <div id="page5" class="screen">
