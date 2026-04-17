@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Forever 💜</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:italic,wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-purple: #1a0033;
+            --royal-violet: #3c096c;
+            --vibrant-purple: #7b2cbf;
+            --glow-purple: #c77dff;
+            --soft-lavender: #e0aaff;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        /* CUSTOM CURSOR */
+        * {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="%23c77dff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), auto;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--deep-purple) 0%, var(--royal-violet) 100%);
+            color: white; overflow: hidden;
+            touch-action: none; 
+        }
+
+        .screen {
+            display: none; height: 100vh; width: 100vw;
+            flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; position: absolute;
+            animation: transitionEffect 1.2s ease-in-out;
+        }
+
+        .active { display: flex; }
+
+        @keyframes transitionEffect {
+            from { opacity: 0; filter: blur(10px); transform: translateY(20px); }
+            to { opacity: 1; filter: blur(0); transform: translateY(0); }
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2.5rem; border-radius: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            max-width: 450px; width: 85%; z-index: 10;
+            max-height: 85vh; overflow-y: auto;
+        }
+
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--glow-purple); text-shadow: 0 0 15px rgba(199, 125, 255, 0.6); }
+        .timer-text { font-size: 1.5rem; font-weight: 300; color: var(--soft-lavender); }
+
+        .btn-romantic {
+            background: transparent; color: white; border: 1px solid var(--glow-purple);
+            padding: 12px 30px; border-radius: 100px; margin: 10px;
+            transition: all 0.4s; text-transform: uppercase; letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .btn-romantic:hover { background: var(--glow-purple); box-shadow: 0 0 25px var(--glow-purple); transform: translateY(-2px); }
+
+        .photo-frame { width: 180px; height: 180px; border-radius: 50%; border: 3px solid var(--glow-purple); padding: 10px; margin-bottom: 20px; overflow: hidden; display: inline-block; }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        .rain-polaroid {
+            position: absolute; width: 130px; background: white;
+            padding: 8px 8px 25px 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 5; top: -250px; animation: drop linear forwards;
+        }
+        .rain-polaroid img { width: 100%; height: 110px; object-fit: cover; }
+        @keyframes drop { from { transform: translateY(0) rotate(0deg); } to { transform: translateY(150vh) rotate(360deg); } }
+
+        input, textarea {
+            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glow-purple);
+            border-radius: 10px; padding: 10px; color: white; margin-top: 10px; box-sizing: border-box;
+        }
+
+        .vault-message-item {
+            background: rgba(255,255,255,0.05); border-radius: 15px; margin-bottom: 15px;
+            text-align: left; border: 1px solid rgba(199, 125, 255, 0.2); transition: 0.3s;
+        }
+        summary {
+            padding: 15px; list-style: none; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        summary:hover { background: rgba(199, 125, 255, 0.1); }
+        summary::after { content: '✉️'; transition: 0.3s; }
+        details[open] summary::after { content: '📖'; }
+        .letter-content { padding: 15px; border-top: 1px dashed rgba(199, 125, 255, 0.3); color: #f3e8ff; line-height: 1.6; }
+        .vault-date { font-size: 0.65rem; color: var(--glow-purple); opacity: 0.8; }
+
+        .floating-heart { position: absolute; pointer-events: none; color: var(--vibrant-purple); opacity: 0.3; animation: floatUp 8s linear infinite; }
+        @keyframes floatUp { from { transform: translateY(105vh); } to { transform: translateY(-10vh); } }
+    </style>
+</head>
+<body>
+
+    <audio id="mySong" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="page1" class="screen active">
+        <div class="glass-card">
+            <h1>Happy Monthsary</h1>
+            <p class="timer-text" id="timer">Counting moments...</p>
+            <button class="btn-romantic" onclick="toPage(2)">Unlock My Heart</button>
+            <button class="btn-romantic" onclick="toPage(5)">The Letter Vault</button>
+        </div>
+    </div>
+
+    <div id="page2" class="screen">
+        <div class="glass-card">
+            <div class="photo-frame"><img src="1.jpg" alt="Us"></div>
+            <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem;">To My Special Someone</h2>
+            <p>"In a garden of purple roses, you are my most beautiful bloom."</p>
+            <button class="btn-romantic" onclick="toPage(3)">See Our Memories</button>
+        </div>
+    </div>
+
+    <div id="page3" class="screen">
+        <h1 style="font-size: 4rem; z-index: 10; position: relative; pointer-events: none;">I'm Falling for You</h1>
+        <div id="rain-zone" style="position: absolute; width:100%; height:100%; top:0; left:0; overflow: hidden;"></div>
+        <button class="btn-romantic" style="position: relative; z-index: 1000;" onclick="toPage(4)">Read My Letter</button>
+    </div>
+
+    <div id="page4" class="screen">
+        <div class="glass-card" style="max-width: 700px;">
+            <h1>My Love</h1>
+            <div style="text-align: left; font-family: 'Playfair Display', serif; max-height: 40vh; overflow-y: auto; padding-right: 10px;">
+                <p>Hi mahall kooo hihihi, gulatt ka dito nuu hihihihi😝...</p>
+                <p>(Your beautiful letter text goes here just like before...)</p>
+            </div>
+            <button class="btn-romantic" onclick="toPage(1)">Go Back</button>
+        </div>
+    </div>
+
+    <div id="page5" class="screen">
+        <div class="glass-card" id="vault-main">
+            <h1>Letter Vault 💜</h1>
+            <button class="btn-romantic" onclick="toggleVault('write')">Write Letter</button>
+            <button class="btn-romantic" onclick="toggleVault('read')">Read Letters</button>
+            <button class="btn-romantic" onclick="toPage(1)">Home</button>
+        </div>
+
+        <div class="glass-card" id="vault-write" style="display:none;">
+            <h1>Write to Me</h1>
+            <input type="text" id="sender_name" placeholder="Your Name">
+            <textarea id="message_text" rows="5" placeholder="Your message..."></textarea>
+            <button onclick="saveLetter()" class="btn-romantic">Send ✨</button>
+            <button class="btn-romantic" onclick="toggleVault('main')">Cancel</button>
+        </div>
+
+        <div class="glass-card" id="vault-read" style="display:none;">
+            <h1>Our Letters</h1>
+            <p style="font-size: 0.7rem; opacity: 0.6;">Click name to read</p>
+            <div id="letters-container" style="max-height: 50vh; overflow-y: auto;">
+                </div>
+            <button class="btn-romantic" onclick="toggleVault('main')">Back</button>
+        </div>
+    </div>
+
+    <script>
+        const startTimestamp = new Date(2025, 5, 20); // June 20, 2025
+        const myPhotos = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']; 
+
+        // NAVIGATION
+        function toPage(num) {
+            const song = document.getElementById('mySong');
+            song.play().catch(()=>{});
+            
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById('page' + num).classList.add('active');
+            
+            if(num === 3) startRain(); else stopRain();
+            if(num === 5) loadLetters();
+        }
+
+        function toggleVault(m) {
+            document.getElementById('vault-main').style.display = m === 'main' ? 'block' : 'none';
+            document.getElementById('vault-write').style.display = m === 'write' ? 'block' : 'none';
+            document.getElementById('vault-read').style.display = m === 'read' ? 'block' : 'none';
+        }
+
+        // TIMER
+        function runTimer() {
+            const diff = new Date() - startTimestamp;
+            const d = Math.floor(diff / 86400000);
+            const h = Math.floor((diff / 3600000) % 24);
+            const m = Math.floor((diff / 60000) % 60);
+            const s = Math.floor((diff / 1000) % 60);
+            document.getElementById('timer').innerText = `${d}d ${h}h ${m}m ${s}s`;
+        }
+        setInterval(runTimer, 1000);
+
+        // VAULT LOGIC (The JS alternative to PHP)
+        function saveLetter() {
+            const name = document.getElementById('sender_name').value;
+            const msg = document.getElementById('message_text').value;
+
+            if(!name || !msg) return alert("Please fill both fields! 💜");
+
+            const newLetter = {
+                name: name,
+                message: msg,
+                date: new Date().toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true })
+            };
+
+            // Get existing letters from LocalStorage
+            let letters = JSON.parse(localStorage.getItem('my_letters')) || [];
+            letters.push(newLetter);
+            
+            // Save back to LocalStorage
+            localStorage.setItem('my_letters', JSON.stringify(letters));
+
+            // Clear inputs and switch view
+            document.getElementById('sender_name').value = '';
+            document.getElementById('message_text').value = '';
+            loadLetters();
+            toggleVault('read');
+        }
+
+        function loadLetters() {
+            const container = document.getElementById('letters-container');
+            const letters = JSON.parse(localStorage.getItem('my_letters')) || [];
+            
+            if (letters.length === 0) {
+                container.innerHTML = '<p>No letters yet.</p>';
+                return;
+            }
+
+            // Reverse to show newest first
+            container.innerHTML = letters.reverse().map(l => `
+                <details class="vault-message-item">
+                    <summary>
+                        <strong>${l.name}</strong>
+                        <span class="vault-date">${l.date}</span>
+                    </summary>
+                    <div class="letter-content"><p>${l.message.replace(/\n/g, '<br>')}</p></div>
+                </details>
+            `).join('');
+        }
+
+        // RAIN SYSTEM
+        let rainInt;
+        function startRain() {
+            rainInt = setInterval(() => {
+                const c = document.createElement('div');
+                c.className = 'rain-polaroid';
+                c.innerHTML = `<img src="${myPhotos[Math.floor(Math.random()*myPhotos.length)]}"><div style="text-align:center">💜</div>`;
+                c.style.left = Math.random() * 80 + 'vw';
+                c.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                document.getElementById('rain-zone').appendChild(c);
+                setTimeout(() => c.remove(), 8000);
+            }, 700);
+        }
+        function stopRain() { clearInterval(rainInt); document.getElementById('rain-zone').innerHTML = ''; }
+
+        // FLOATING HEARTS
+        setInterval(() => {
+            const h = document.createElement('div');
+            h.innerHTML = '💜'; h.className = 'floating-heart';
+            h.style.left = Math.random() * 100 + 'vw';
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 8000);
+        }, 700);
+    </script>
+</body>
+</html>
