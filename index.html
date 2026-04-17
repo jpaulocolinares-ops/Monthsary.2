@@ -70,14 +70,34 @@
         .photo-frame { width: 180px; height: 180px; border-radius: 50%; border: 3px solid var(--glow-purple); padding: 10px; margin-bottom: 20px; overflow: hidden; display: inline-block; }
         .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
 
-        .rain-polaroid {
-            position: absolute; width: 130px; background: white;
-            padding: 8px 8px 25px 8px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            z-index: 5; top: -250px; animation: drop linear forwards;
+        /* PAGE 4: PAPER DESIGN */
+        .letter-paper {
+            background-color: #fdf6e3;
+            background-image: linear-gradient(90deg, transparent 59px, #d8b4fe 59px, #d8b4fe 61px, transparent 61px),
+                               linear-gradient(#e0d7c7 1px, transparent 1px);
+            background-size: 100% 1.8rem, 100% 1.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 650px; width: 85%; 
+            padding: 50px 50px 50px 100px; /* Left padding 100px to clear the line */
+            border-radius: 3px;
+            max-height: 70vh; overflow-y: auto;
+            color: #2e004a;
+            font-family: 'Playfair Display', serif;
+            line-height: 1.8rem; text-align: left;
+            position: relative;
         }
-        .rain-polaroid img { width: 100%; height: 110px; object-fit: cover; }
-        @keyframes drop { from { transform: translateY(0) rotate(0deg); } to { transform: translateY(150vh) rotate(360deg); } }
 
+        .letter-paper::before {
+            content: ''; position: absolute; top: 0; left: 60px; /* Line moved to 60px */
+            height: 100%; width: 2px; background-color: #d8b4fe; opacity: 0.5;
+        }
+
+        .love-letter-signature {
+            margin-top: 40px; font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem; color: #5c2770; text-align: right; padding-right: 20px;
+        }
+
+        /* VAULT STYLES */
         input, textarea {
             width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glow-purple);
             border-radius: 10px; padding: 10px; color: white; margin-top: 10px; box-sizing: border-box;
@@ -87,15 +107,16 @@
             background: rgba(255,255,255,0.05); border-radius: 15px; margin-bottom: 15px;
             text-align: left; border: 1px solid rgba(199, 125, 255, 0.2); transition: 0.3s;
         }
-        summary {
-            padding: 15px; list-style: none; cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        summary:hover { background: rgba(199, 125, 255, 0.1); }
-        summary::after { content: '✉️'; transition: 0.3s; }
-        details[open] summary::after { content: '📖'; }
+        summary { padding: 15px; list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
         .letter-content { padding: 15px; border-top: 1px dashed rgba(199, 125, 255, 0.3); color: #f3e8ff; line-height: 1.6; }
         .vault-date { font-size: 0.65rem; color: var(--glow-purple); opacity: 0.8; }
+
+        .rain-polaroid {
+            position: absolute; width: 130px; background: white; padding: 8px 8px 25px 8px; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); z-index: 5; top: -250px; animation: drop linear forwards;
+        }
+        .rain-polaroid img { width: 100%; height: 110px; object-fit: cover; }
+        @keyframes drop { from { transform: translateY(0) rotate(0deg); } to { transform: translateY(150vh) rotate(360deg); } }
 
         .floating-heart { position: absolute; pointer-events: none; color: var(--vibrant-purple); opacity: 0.3; animation: floatUp 8s linear infinite; }
         @keyframes floatUp { from { transform: translateY(105vh); } to { transform: translateY(-10vh); } }
@@ -132,87 +153,18 @@
     </div>
 
     <div id="page4" class="screen">
-        <style>
-            /* New specific paper letter styles just for Page 4 */
-            .letter-paper {
-                background-color: #fdf6e3; /* Classic, off-white paper color */
-                background-image: linear-gradient(90deg, transparent 79px, #ab82ff 79px, #ab82ff 81px, transparent 81px),
-                                   linear-gradient(#e0d7c7 1px, transparent 1px);
-                background-size: 100% 1.8rem, 100% 1.8rem; /* Rule spacing (adjust as needed) */
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(224, 215, 199, 0.5);
-                
-                max-width: 650px; 
-                width: 90%; 
-                padding: 50px 70px; /* Ample margin for a realistic look */
-                border-radius: 3px; /* Sharp paper edges */
-                max-height: 80vh; 
-                overflow-y: auto; 
-                
-                color: #2e004a; /* Dark purple ink-like color */
-                font-family: 'Playfair Display', serif; /* A more letter-appropriate font */
-                line-height: 1.8rem; 
-                text-align: left;
-                position: relative;
-            }
-
-            /* Red "margin" line effect */
-            .letter-paper::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 80px;
-                height: 100%;
-                width: 2px;
-                background-color: #ffcccc; /* Soft red line */
-            }
-
-            /* Signature formatting */
-            .love-letter-signature {
-                margin-top: 60px;
-                font-family: 'Dancing Script', cursive; /* The handwriting font */
-                font-size: 1.8rem;
-                color: #5c2770;
-                text-align: right;
-                padding-right: 30px;
-            }
-            
-            /* Add some visual breathing room above the Go Back button */
-            #page4 .btn-romantic {
-                margin-top: 40px;
-                position: relative;
-                z-index: 10;
-                background: var(--glow-purple); /* Make it stand out against the paper */
-                color: var(--deep-purple);
-                border: 1px solid var(--deep-purple);
-            }
-            
-            /* Customize the scrollbar for the paper */
-            .letter-paper::-webkit-scrollbar {
-                width: 6px;
-            }
-            .letter-paper::-webkit-scrollbar-thumb {
-                background: #e0d7c7;
-                border-radius: 10px;
-            }
-        </style>
-
         <div class="letter-paper">
-            <h1>My Love</h1>
-            
+            <h1 style="color: #5c2770; text-shadow: none;">My Love</h1>
             <p>Hi mahall kooo hihihi, gulatt ka dito nuu hihihihi😝. actually po isa toh sa mga pinag pupuyatan ko hihihihihii, it was a simple website i created as a gift for you mahall ko hihihihi. wala eh ict ako eh hihi so isa to sa mga alm kong way to show my appriciation for you hihihihi.</p>
-            
             <p>Actually mahall, kahit hindi naman natin sya Monthsary, june 20 was a very special date for me, it was the date kung saan inipon ko lahatt nang tapang ko sa katawan, dahil dun ko din nasiguro na mahall nga talaga kita, dun ko nalaman na ayaw alaga kitang mawala sa buhay ko, ayunn napaamin ako nang wala sa oras hashashahshash, at yun din ang araw na na-realize ko kung gaano ako kamanhid hsahsjajshha.</p>
-            
-            <p>Thankyouuu mahall, sa lahatt nang memories na binigay mo sakin, gaya nang paborito natin na kanta sa i see the light, ngayong nandito ka sa buhay ko, mas malinaw at lumiwanag ang daan na tinatahak ko sa buhay, mas gumaan at dumali ang paglipas nang mga araw, at mas natutuna kong mag mahal, at mahalin ang sariliko. thankyouu mahall lalo na sa mga gala natin na kahit kabado ka or tumatakas ka lang, sumasama ka parin sakin, actually mahall, sobrang gratefull ko dun, kasi dahil may chance na mapagalitan ka, you still chose to be with me.</p>
-
-            <p>Iloveeeyouuu mahall koooo, at ikaw lang ang babaeng mamahalin ko hanang sa araw na kunin ako ni Lord. i cant wait sa right moment kung saan pwede na, sa araw na mapapakasalan kita, at sa panahon na kasama na kita sa iisang bahay at bumubuo ang pamilya. kaya i promisee my lovee that i will always choose you, forgive you, and love you hangang sa unti unti na natin nakukulayan ang mga plano natin sa buhay. mahal na mahal kitaa mahall kooo.</p>
+            <p>Thankyouuu mahall, sa lahatt nang memories na binigay mo sakin, gaya nang paborito natin na kanta sa i see the light, ngayong nandito ka sa buhay ko, mas malinaw at lumiwanag ang daan na tinatahak ko sa buhay, mas gumaan at dumali ang paglipas nang mga araw, at mas natutuna kong mag mahal, at mahalin ang sariliko. thankyouu mahall lalo na sa mga gala natin na kahit kabado ka or tumatakas ka lang, sumasama ka parin sakin, actually mahall, sobrang gratefull ko dun, kasi dahil may chance na mapagalitan ka, you still chose to be with me. iloveeeyouuu mahall koooo, at ikaw lang ang babaeng mamahalin ko hanang sa araw na kunin ako ni Lord. i cant wait sa right moment kung saan pwede na, sa araw na mapapakasalan kita, at sa panahon na kasama na kita sa iisang bahay at bumubuo ang pamilya. kaya i promisee my lovee that i will always choose you, forgive you, and love you hangang sa unti unti na natin nakukulayan ang mga plano natin sa buhay. mahal na mahal kitaa mahall kooo.</p>
             
             <div class="love-letter-signature">
                 From:<br>
                 Mahall mo,
             </div>
         </div>
-        <button class="btn-romantic" onclick="toPage(1)">Go Back</button>
+        <button class="btn-romantic" style="background: var(--glow-purple); color: var(--deep-purple);" onclick="toPage(1)">Go Back</button>
     </div>
 
     <div id="page5" class="screen">
@@ -233,25 +185,20 @@
 
         <div class="glass-card" id="vault-read" style="display:none;">
             <h1>Our Letters</h1>
-            <p style="font-size: 0.7rem; opacity: 0.6;">Click name to read</p>
-            <div id="letters-container" style="max-height: 50vh; overflow-y: auto;">
-                </div>
+            <div id="letters-container" style="max-height: 50vh; overflow-y: auto;"></div>
             <button class="btn-romantic" onclick="toggleVault('main')">Back</button>
         </div>
     </div>
 
     <script>
-        const startTimestamp = new Date(2025, 5, 20); // June 20, 2025
+        const startTimestamp = new Date(2025, 5, 20);
         const myPhotos = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']; 
 
-        // NAVIGATION
         function toPage(num) {
             const song = document.getElementById('mySong');
             song.play().catch(()=>{});
-            
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById('page' + num).classList.add('active');
-            
             if(num === 3) startRain(); else stopRain();
             if(num === 5) loadLetters();
         }
@@ -262,7 +209,6 @@
             document.getElementById('vault-read').style.display = m === 'read' ? 'block' : 'none';
         }
 
-        // TIMER
         function runTimer() {
             const diff = new Date() - startTimestamp;
             const d = Math.floor(diff / 86400000);
@@ -273,27 +219,14 @@
         }
         setInterval(runTimer, 1000);
 
-        // VAULT LOGIC (The JS alternative to PHP)
         function saveLetter() {
             const name = document.getElementById('sender_name').value;
             const msg = document.getElementById('message_text').value;
-
             if(!name || !msg) return alert("Please fill both fields! 💜");
-
-            const newLetter = {
-                name: name,
-                message: msg,
-                date: new Date().toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true })
-            };
-
-            // Get existing letters from LocalStorage
+            const newLetter = { name, message: msg, date: new Date().toLocaleString() };
             let letters = JSON.parse(localStorage.getItem('my_letters')) || [];
             letters.push(newLetter);
-            
-            // Save back to LocalStorage
             localStorage.setItem('my_letters', JSON.stringify(letters));
-
-            // Clear inputs and switch view
             document.getElementById('sender_name').value = '';
             document.getElementById('message_text').value = '';
             loadLetters();
@@ -303,25 +236,15 @@
         function loadLetters() {
             const container = document.getElementById('letters-container');
             const letters = JSON.parse(localStorage.getItem('my_letters')) || [];
-            
-            if (letters.length === 0) {
-                container.innerHTML = '<p>No letters yet.</p>';
-                return;
-            }
-
-            // Reverse to show newest first
+            if (letters.length === 0) { container.innerHTML = '<p>No letters yet.</p>'; return; }
             container.innerHTML = letters.reverse().map(l => `
                 <details class="vault-message-item">
-                    <summary>
-                        <strong>${l.name}</strong>
-                        <span class="vault-date">${l.date}</span>
-                    </summary>
+                    <summary><strong>${l.name}</strong> <span class="vault-date">${l.date}</span></summary>
                     <div class="letter-content"><p>${l.message.replace(/\n/g, '<br>')}</p></div>
                 </details>
             `).join('');
         }
 
-        // RAIN SYSTEM
         let rainInt;
         function startRain() {
             rainInt = setInterval(() => {
@@ -336,7 +259,6 @@
         }
         function stopRain() { clearInterval(rainInt); document.getElementById('rain-zone').innerHTML = ''; }
 
-        // FLOATING HEARTS
         setInterval(() => {
             const h = document.createElement('div');
             h.innerHTML = '💜'; h.className = 'floating-heart';
