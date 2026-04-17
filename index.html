@@ -15,7 +15,6 @@
             --glass: rgba(255, 255, 255, 0.1);
         }
 
-        /* CUSTOM CURSOR */
         * {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="%23c77dff"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>'), auto;
             user-select: none;
@@ -47,16 +46,35 @@
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             padding: 2.5rem; border-radius: 40px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
             max-width: 450px; width: 85%; z-index: 10;
-            max-height: 85vh; overflow-y: auto;
+        }
+
+        /* UNIVERSAL PAPER DESIGN */
+        .letter-paper {
+            background-color: #fdf6e3;
+            background-image: linear-gradient(90deg, transparent 59px, #d8b4fe 59px, #d8b4fe 61px, transparent 61px),
+                               linear-gradient(#e0d7c7 1px, transparent 1px);
+            background-size: 100% 1.8rem, 100% 1.8rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 650px; width: 85%; 
+            padding: 40px 40px 40px 90px;
+            border-radius: 3px;
+            max-height: 70vh; overflow-y: auto;
+            color: #2e004a;
+            position: relative;
+            text-align: left;
+        }
+
+        .letter-paper::before {
+            content: ''; position: absolute; top: 0; left: 60px;
+            height: 100%; width: 2px; background-color: #d8b4fe; opacity: 0.5;
         }
 
         h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--glow-purple); text-shadow: 0 0 15px rgba(199, 125, 255, 0.6); }
-        .timer-text { font-size: 1.5rem; font-weight: 300; color: var(--soft-lavender); }
+        .paper-h1 { color: #5c2770; text-shadow: none; margin-bottom: 20px; }
 
         .btn-romantic {
             background: transparent; color: white; border: 1px solid var(--glow-purple);
@@ -67,49 +85,59 @@
 
         .btn-romantic:hover { background: var(--glow-purple); box-shadow: 0 0 25px var(--glow-purple); transform: translateY(-2px); }
 
+        .paper-btn {
+            background: var(--vibrant-purple);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            margin-top: 15px;
+        }
+
+        /* PAPER FORM STYLES */
+        .paper-input, .paper-textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #3c096c;
+            line-height: 1.8rem;
+            outline: none;
+            padding: 0;
+            resize: none;
+        }
+
+        .paper-input::placeholder, .paper-textarea::placeholder {
+            color: #bca0dc;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        /* VAULT LIST STYLES */
+        .vault-item {
+            border-bottom: 1px dashed #d8b4fe;
+            padding: 10px 0;
+            list-style: none;
+        }
+
+        .vault-item summary {
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            color: #5c2770;
+        }
+
+        .vault-content {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.4rem;
+            padding: 10px 0;
+            color: #2e004a;
+        }
+
         .photo-frame { width: 180px; height: 180px; border-radius: 50%; border: 3px solid var(--glow-purple); padding: 10px; margin-bottom: 20px; overflow: hidden; display: inline-block; }
         .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* PAGE 4: PAPER DESIGN */
-        .letter-paper {
-            background-color: #fdf6e3;
-            background-image: linear-gradient(90deg, transparent 59px, #d8b4fe 59px, #d8b4fe 61px, transparent 61px),
-                               linear-gradient(#e0d7c7 1px, transparent 1px);
-            background-size: 100% 1.8rem, 100% 1.8rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            max-width: 650px; width: 85%; 
-            padding: 50px 50px 50px 100px; /* Left padding 100px to clear the line */
-            border-radius: 3px;
-            max-height: 70vh; overflow-y: auto;
-            color: #2e004a;
-            font-family: 'Playfair Display', serif;
-            line-height: 1.8rem; text-align: left;
-            position: relative;
-        }
-
-        .letter-paper::before {
-            content: ''; position: absolute; top: 0; left: 60px; /* Line moved to 60px */
-            height: 100%; width: 2px; background-color: #d8b4fe; opacity: 0.5;
-        }
-
-        .love-letter-signature {
-            margin-top: 40px; font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem; color: #5c2770; text-align: right; padding-right: 20px;
-        }
-
-        /* VAULT STYLES */
-        input, textarea {
-            width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--glow-purple);
-            border-radius: 10px; padding: 10px; color: white; margin-top: 10px; box-sizing: border-box;
-        }
-
-        .vault-message-item {
-            background: rgba(255,255,255,0.05); border-radius: 15px; margin-bottom: 15px;
-            text-align: left; border: 1px solid rgba(199, 125, 255, 0.2); transition: 0.3s;
-        }
-        summary { padding: 15px; list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .letter-content { padding: 15px; border-top: 1px dashed rgba(199, 125, 255, 0.3); color: #f3e8ff; line-height: 1.6; }
-        .vault-date { font-size: 0.65rem; color: var(--glow-purple); opacity: 0.8; }
 
         .rain-polaroid {
             position: absolute; width: 130px; background: white; padding: 8px 8px 25px 8px; 
@@ -131,7 +159,7 @@
     <div id="page1" class="screen active">
         <div class="glass-card">
             <h1>Happy Monthsary</h1>
-            <p class="timer-text" id="timer">Counting moments...</p>
+            <p id="timer" style="font-size: 1.2rem; color: var(--soft-lavender);">Counting...</p>
             <button class="btn-romantic" onclick="toPage(2)">Unlock My Heart</button>
             <button class="btn-romantic" onclick="toPage(5)">The Letter Vault</button>
         </div>
@@ -140,31 +168,29 @@
     <div id="page2" class="screen">
         <div class="glass-card">
             <div class="photo-frame"><img src="1.jpg" alt="Us"></div>
-            <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem;">To My Special Someone</h2>
+            <h2 style="font-family: 'Dancing Script'; font-size: 2.5rem; color: var(--glow-purple);">To My Special Someone</h2>
             <p>"In a garden of purple roses, you are my most beautiful bloom."</p>
             <button class="btn-romantic" onclick="toPage(3)">See Our Memories</button>
         </div>
     </div>
 
     <div id="page3" class="screen">
-        <h1 style="font-size: 4rem; z-index: 10; position: relative; pointer-events: none;">I'm Falling for You</h1>
+        <h1 style="font-size: 4rem; z-index: 10; position: relative;">I'm Falling for You</h1>
         <div id="rain-zone" style="position: absolute; width:100%; height:100%; top:0; left:0; overflow: hidden;"></div>
         <button class="btn-romantic" style="position: relative; z-index: 1000;" onclick="toPage(4)">Read My Letter</button>
     </div>
 
     <div id="page4" class="screen">
         <div class="letter-paper">
-            <h1 style="color: #5c2770; text-shadow: none;">My Love</h1>
-            <p>Hi mahall kooo hihihi, gulatt ka dito nuu hihihihi😝. actually po isa toh sa mga pinag pupuyatan ko hihihihihii, it was a simple website i created as a gift for you mahall ko hihihihi. wala eh ict ako eh hihi so isa to sa mga alm kong way to show my appriciation for you hihihihi.</p>
-            <p>Actually mahall, kahit hindi naman natin sya Monthsary, june 20 was a very special date for me, it was the date kung saan inipon ko lahatt nang tapang ko sa katawan, dahil dun ko din nasiguro na mahall nga talaga kita, dun ko nalaman na ayaw alaga kitang mawala sa buhay ko, ayunn napaamin ako nang wala sa oras hashashahshash, at yun din ang araw na na-realize ko kung gaano ako kamanhid hsahsjajshha.</p>
-            <p>Thankyouuu mahall, sa lahatt nang memories na binigay mo sakin, gaya nang paborito natin na kanta sa i see the light, ngayong nandito ka sa buhay ko, mas malinaw at lumiwanag ang daan na tinatahak ko sa buhay, mas gumaan at dumali ang paglipas nang mga araw, at mas natutuna kong mag mahal, at mahalin ang sariliko. thankyouu mahall lalo na sa mga gala natin na kahit kabado ka or tumatakas ka lang, sumasama ka parin sakin, actually mahall, sobrang gratefull ko dun, kasi dahil may chance na mapagalitan ka, you still chose to be with me. iloveeeyouuu mahall koooo, at ikaw lang ang babaeng mamahalin ko hanang sa araw na kunin ako ni Lord. i cant wait sa right moment kung saan pwede na, sa araw na mapapakasalan kita, at sa panahon na kasama na kita sa iisang bahay at bumubuo ang pamilya. kaya i promisee my lovee that i will always choose you, forgive you, and love you hangang sa unti unti na natin nakukulayan ang mga plano natin sa buhay. mahal na mahal kitaa mahall kooo.</p>
-            
-            <div class="love-letter-signature">
-                From:<br>
-                Mahall mo,
+            <h1 class="paper-h1">My Love</h1>
+            <p style="font-family: 'Playfair Display', serif;">Hi mahall kooo hihihi, gulatt ka dito nuu hihihihi😝. actually po isa toh sa mga pinag pupuyatan ko hihihihihii, it was a simple website i created as a gift for you mahall ko hihihihi. wala eh ict ako eh hihi so isa to sa mga alm kong way to show my appriciation for you hihihihi.</p>
+            <p style="font-family: 'Playfair Display', serif;">Actually mahall, kahit hindi naman natin sya Monthsary, june 20 was a very special date for me, it was the date kung saan inipon ko lahatt nang tapang ko sa katawan, dahil dun ko din nasiguro na mahall nga talaga kita, dun ko nalaman na ayaw alaga kitang mawala sa buhay ko, ayunn napaamin ako nang wala sa oras hashashahshash, at yun din ang araw na na-realize ko kung gaano ako kamanhid hsahsjajshha.</p>
+            <p style="font-family: 'Playfair Display', serif;">Thankyouuu mahall, sa lahatt nang memories na binigay mo sakin, gaya nang paborito natin na kanta sa i see the light, ngayong nandito ka sa buhay ko, mas malinaw at lumiwanag ang daan na tinatahak ko sa buhay, mas gumaan at dumali ang paglipas nang mga araw, at mas natutuna kong mag mahal, at mahalin ang sariliko. thankyouu mahall lalo na sa mga gala natin na kahit kabado ka or tumatakas ka lang, sumasama ka parin sakin, actually mahall, sobrang gratefull ko dun, kasi dahil may chance na mapagalitan ka, you still chose to be with me. mahal na mahal kitaa mahall kooo.</p>
+            <div style="text-align: right; font-family: 'Dancing Script', cursive; font-size: 1.8rem; margin-top: 30px;">
+                From:<br>Mahall mo,
             </div>
         </div>
-        <button class="btn-romantic" style="background: var(--glow-purple); color: var(--deep-purple);" onclick="toPage(1)">Go Back</button>
+        <button class="btn-romantic" onclick="toPage(1)">Go Back</button>
     </div>
 
     <div id="page5" class="screen">
@@ -175,23 +201,25 @@
             <button class="btn-romantic" onclick="toPage(1)">Home</button>
         </div>
 
-        <div class="glass-card" id="vault-write" style="display:none;">
-            <h1>Write to Me</h1>
-            <input type="text" id="sender_name" placeholder="Your Name">
-            <textarea id="message_text" rows="5" placeholder="Your message..."></textarea>
-            <button onclick="saveLetter()" class="btn-romantic">Send ✨</button>
-            <button class="btn-romantic" onclick="toggleVault('main')">Cancel</button>
+        <div class="letter-paper" id="vault-write" style="display:none;">
+            <h1 class="paper-h1">Write to Me...</h1>
+            <input type="text" id="sender_name" class="paper-input" placeholder="Name: ">
+            <textarea id="message_text" class="paper-textarea" rows="8" placeholder="Start writing here..."></textarea>
+            <div style="text-align: right;">
+                <button onclick="saveLetter()" class="paper-btn">Save to Vault ✨</button>
+                <button class="paper-btn" style="background: #9d4edd;" onclick="toggleVault('main')">Cancel</button>
+            </div>
         </div>
 
-        <div class="glass-card" id="vault-read" style="display:none;">
-            <h1>Our Letters</h1>
-            <div id="letters-container" style="max-height: 50vh; overflow-y: auto;"></div>
-            <button class="btn-romantic" onclick="toggleVault('main')">Back</button>
+        <div class="letter-paper" id="vault-read" style="display:none;">
+            <h1 class="paper-h1">Our History</h1>
+            <div id="letters-container"></div>
+            <button class="paper-btn" onclick="toggleVault('main')">Back to Menu</button>
         </div>
     </div>
 
     <script>
-        const startTimestamp = new Date(2025, 5, 20);
+        const startTimestamp = new Date(2025, 5, 20); // June 20
         const myPhotos = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg']; 
 
         function toPage(num) {
@@ -222,8 +250,8 @@
         function saveLetter() {
             const name = document.getElementById('sender_name').value;
             const msg = document.getElementById('message_text').value;
-            if(!name || !msg) return alert("Please fill both fields! 💜");
-            const newLetter = { name, message: msg, date: new Date().toLocaleString() };
+            if(!name || !msg) return alert("Don't leave the paper blank! 💜");
+            const newLetter = { name, message: msg, date: new Date().toLocaleDateString() };
             let letters = JSON.parse(localStorage.getItem('my_letters')) || [];
             letters.push(newLetter);
             localStorage.setItem('my_letters', JSON.stringify(letters));
@@ -236,11 +264,11 @@
         function loadLetters() {
             const container = document.getElementById('letters-container');
             const letters = JSON.parse(localStorage.getItem('my_letters')) || [];
-            if (letters.length === 0) { container.innerHTML = '<p>No letters yet.</p>'; return; }
+            if (letters.length === 0) { container.innerHTML = '<p style="font-family:Poppins">The vault is empty...</p>'; return; }
             container.innerHTML = letters.reverse().map(l => `
-                <details class="vault-message-item">
-                    <summary><strong>${l.name}</strong> <span class="vault-date">${l.date}</span></summary>
-                    <div class="letter-content"><p>${l.message.replace(/\n/g, '<br>')}</p></div>
+                <details class="vault-item">
+                    <summary>${l.name} (${l.date})</summary>
+                    <div class="vault-content">${l.message.replace(/\n/g, '<br>')}</div>
                 </details>
             `).join('');
         }
